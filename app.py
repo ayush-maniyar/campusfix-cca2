@@ -12,11 +12,19 @@ def home():
 
 @app.route("/complaint", methods=["POST"])
 def add_complaint():
+    name = request.form["name"].strip()
+    room = request.form["room"].strip()
+    category = request.form["category"].strip()
+    description = request.form["description"].strip()
+
+    if not name or not room or not category or not description:
+        return "All fields are required", 400
+
     complaint = {
-        "name": request.form["name"],
-        "room": request.form["room"],
-        "category": request.form["category"],
-        "description": request.form["description"]
+        "name": name,
+        "room": room,
+        "category": category,
+        "description": description
     }
 
     complaints.append(complaint)
