@@ -38,5 +38,21 @@
 
         <button type="submit">Submit Complaint</button>
     </form>
+
+    <hr>
+
+    <h2>Submitted Complaints</h2>
+
+    {% for complaint in complaints %}
+        <div>
+            <strong>{{ complaint.category }}</strong>
+            <p>Name: {{ complaint.name }}</p>
+            <p>Room: {{ complaint.room }}</p>
+            <p>{{ complaint.description }}</p>
+        </div>
+        <hr>
+    {% else %}
+        <p>No complaints submitted yet.</p>
+    {% endfor %}
 </body>
 </html>
