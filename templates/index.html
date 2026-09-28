@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CampusFix</title>
+</head>
+<body>
+    <h1>CampusFix</h1>
+    <h2>Hostel Complaint Tracker</h2>
+
+    <form method="POST" action="/complaint">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <br><br>
+
+        <label>Room Number:</label>
+        <input type="text" name="room" required>
+
+        <br><br>
+
+        <label>Category:</label>
+        <select name="category" required>
+            <option value="">Select Category</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Plumbing">Plumbing</option>
+            <option value="Cleanliness">Cleanliness</option>
+            <option value="Internet">Internet</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <br><br>
+
+        <label>Description:</label>
+        <br>
+        <textarea name="description" required></textarea>
+
+        <br><br>
+
+        <button type="submit">Submit Complaint</button>
+    </form>
+</body>
+</html>
