@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
@@ -7,7 +9,11 @@ complaints = []
 
 @app.route("/")
 def home():
-    return render_template("index.html", complaints=complaints)
+    return render_template(
+        "index.html",
+        complaints=complaints,
+        commit_id=os.getenv("COMMIT_ID", "local")
+    )
 
 
 @app.route("/complaint", methods=["POST"])
@@ -35,6 +41,14 @@ def add_complaint():
 @app.route("/api/complaints")
 def api_complaints():
     return complaints
+
+
+@app.route("/health")
+def health():
+    return {
+        "status": "ok",
+        "commit": os.getenv("COMMIT_ID", "local")
+    }
 
 
 if __name__ == "__main__":
